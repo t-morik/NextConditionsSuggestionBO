@@ -3,10 +3,11 @@ from GPyOpt.methods import BayesianOptimization
 import numpy as np
 
 # --- Define your problem
-def f(x): return (6*x-2)**2*np.sin(12*x-4)
+def f(x): return np.sum(x) # TODO
 
-
-domain = [{'name': 'var_1', 'type': 'continuous', 'domain': (0,1)}]
+domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (2,3,4,5,6,7,8)},
+            {'name': 'frequency', 'type': 'continuous', 'domain': (0.5, 10)},
+            {'name': 'voltage', 'type': 'continuous', 'domain': (0, 18)}]
 
 # --- Solve your problem
 myBopt = BayesianOptimization(f=f, domain=domain)

@@ -19,6 +19,6 @@ def f(x, data = data):
 
 # クラスのインスタンス化と次の実験条件の提案
 myBopt = BayesianOptimization(f=f, domain=domain, X=conditions, batch_size=4, evaluator_type = 'local_penalization')
-result = myBopt.suggest_next_locations()
+next_conditions = myBopt.suggest_next_locations()
 
-print(f'{ result = }')
+print(f'{next_conditions = }')

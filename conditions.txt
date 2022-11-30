@@ -1,0 +1,5 @@
+time of stimulation, frequency, voltage, result
+1, 5.2, 9, 10
+3, 6.2, 9, 10
+4, 5.7, 9, 10
+6, 3.4, 12, 10

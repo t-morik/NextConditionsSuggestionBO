@@ -9,15 +9,11 @@ domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (2,3,4,5
             {'name': 'frequency', 'type': 'continuous', 'domain': (0.5, 10)},
             {'name': 'voltage', 'type': 'continuous', 'domain': (0, 18)}]
 
-my_initial_design = np.array([
-    [1 , 3.5, 5.6],
-    [1 , 3.5, 5.9],
-    [1 , 3.5, 10],
-    [1 , 3.5, 15]
-])
+data = np.loadtxt('./conditions.txt', delimiter= ",", skiprows=1)
+conditions = data[:, 0:3]
 
 # --- Solve your problem
-myBopt = BayesianOptimization(f=f, domain=domain, X=my_initial_design)
+myBopt = BayesianOptimization(f=f, domain=domain, X=conditions)
 myBopt.run_optimization(max_iter=15)
 
 print(f'{myBopt.X}')

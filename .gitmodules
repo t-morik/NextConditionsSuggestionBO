@@ -1,0 +1,6 @@
+[submodule "GPyOpt"]
+	path = GPyOpt
+	url = https://github.com/SheffieldML/GPyOpt.git
+[submodule "GPy"]
+	path = GPy
+	url = https://github.com/SheffieldML/GPy.git

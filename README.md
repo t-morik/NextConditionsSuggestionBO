@@ -9,7 +9,7 @@ source venv/bin/activate
 pip install --upgrade pip 
 cd GPy
 pip -v install -e .
-cd ../gpyopt
+cd ../GPyOpt
 python setup.py develop
 pip install -r ../requirements.txt
 ```
@@ -18,7 +18,7 @@ pip install -r ../requirements.txt
 
 現在のプログラム上では、刺激印加のタイミング(離散値)、周期(連続値)、電圧(連続値)について最適化を行うようになっている。  
 
-なお`conditions.txt`は以下のような形式となっている。
+なお`conditions.csv`は以下のような形式となっている。
 
 | time of stimulation | frequency |  voltage |  result | 
 | ------------------- | --------- | -------- | ------- | 
@@ -28,7 +28,7 @@ pip install -r ../requirements.txt
 | 6                   | 1.5       | 15.4     | 10      | 
 | ~                   | ~         | ~        | ~       | 
 
-以上のような`condtions.txt`を作成したら  
+以上のような`conditions.csv`を作成したら  
 
 ```
 python main.py

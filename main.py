@@ -1,9 +1,10 @@
 # --- Load GPyOpt
 from GPyOpt.methods import BayesianOptimization
 import numpy as np
+from numpy.random import seed
 
 # 条件を探索する領域
-domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (2,3,4,5,6,7,8)},
+domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (0,1,2,3,4,5,6)},
             {'name': 'frequency', 'type': 'continuous', 'domain': (0.5, 10)},
             {'name': 'voltage', 'type': 'continuous', 'domain': (0, 18)}]
 
@@ -18,6 +19,7 @@ def f(x, data = data):
             return data[i][3]
 
 # クラスのインスタンス化と次の実験条件の提案
+seed(123)
 myBopt = BayesianOptimization(f=f, domain=domain, X=conditions, batch_size=4, evaluator_type = 'local_penalization')
 next_conditions = myBopt.suggest_next_locations()
 

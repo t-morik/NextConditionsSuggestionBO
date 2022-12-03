@@ -9,7 +9,7 @@ domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (0,1,2,3
             {'name': 'voltage', 'type': 'continuous', 'domain': (0, 18)}]
 
 # condtions.txtのファイルから実験条件と結果の組み合わせを取ってくる。
-data = np.loadtxt('./conditions.txt', delimiter= ",", skiprows=1)
+data = np.loadtxt('./conditions.csv', delimiter= ",", skiprows=1)
 conditions = data[:, 0:3] # 末列以外の部分で実験条件の設定を行なっている。
 
 # 実験条件の組み合わせを受け取ったら結果を返す関数(すでに実験済みの条件のみ)
@@ -29,7 +29,7 @@ myBopt = BayesianOptimization(f=f,
                                 maximize=True)
 next_conditions = myBopt.suggest_next_locations()
 
-print('[time of stimulation, frequency, voltage]')
-print(f'{next_conditions}')
-print(f'Previous experimental condition\n{myBopt.X}')
-print(f'Previous experimental result (multiplied -1)\n{myBopt.Y}')
+print('\nNext conditions = [time of stimulation, frequency, voltage]')
+print(f'{next_conditions}\n')
+print(f'Previous experimental condition\n{myBopt.X}\n')
+print(f'Previous experimental result (multiplied -1)\n{myBopt.Y}\n')

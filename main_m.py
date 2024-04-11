@@ -5,9 +5,9 @@ import numpy as np
 data_file = 'conditions_m.csv'
 
 # 条件を探索する領域
-domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (0,1,2,3,4,5,6)},
-            {'name': 'frequency', 'type': 'continuous', 'domain': (0.5, 10)},
-            {'name': 'voltage', 'type': 'continuous', 'domain': (0, 18)}]
+domain = [{'name': 'time of stimulation', 'type': 'discrete', 'domain': (2,3,4,5,6,7,8)},
+            {'name': 'frequency', 'type': 'continuous', 'domain': (0.1, 8)},
+            {'name': 'voltage', 'type': 'continuous', 'domain': (0.1, 8)}]
 
 # データの読み取り
 data = np.loadtxt(data_file, delimiter= ",", skiprows=1)

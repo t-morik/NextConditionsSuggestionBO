@@ -6,9 +6,9 @@ import csv
 data_file = 'conditions_k.csv'
 
 # 条件を探索する領域
-domain = [{'name': '電圧', 'type': 'continuous', 'domain': (0,20)},
-            {'name': '刺激時間', 'type': 'continuous', 'domain': (0,240)},
-            {'name': '刺激タイミング', 'type': 'continuous', 'domain': (0, 96)}]
+domain = [{'name': '電圧', 'type': 'continuous', 'domain': (0.1,20)},
+            {'name': '刺激時間', 'type': 'continuous', 'domain': (1,240)},
+            {'name': '刺激タイミング', 'type': 'continuous', 'domain': (1, 96)}]
 
 # データの読み取り
 data = np.loadtxt(data_file, delimiter= ",", skiprows=1)

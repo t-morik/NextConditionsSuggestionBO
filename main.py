@@ -30,6 +30,7 @@ def main(args):
     save_dir = check_dir(args.save_dir)
     batch_size = int(args.batch_size)
     normalize_X = args.normalize_X
+    acquisition_type =args.acquisition_type
 
     # コマンドを command.txt に書き出す
     command = f"{sys.executable} " + " ".join(sys.argv)
@@ -57,6 +58,9 @@ def main(args):
     # 次の実験条件の提案
     print('=' * 100)
     print('Bayesian Optimization start')
+    print('-' * 100)
+    print(f'Optimization: Max')
+    print(f'acquisition_type: {acquisition_type}')
     print(f'normalize_Y: {normalize_Y}')
     print(f'normalize_X: {normalize_X}')
     print(f'batch_size: {batch_size}')
@@ -83,7 +87,8 @@ def main(args):
     next_conditions = suggest.suggest_parameter(domain=domain,
                                                 data=data,
                                                 normalize_Y=normalize_Y,
-                                                batch_size=batch_size)
+                                                batch_size=batch_size,
+                                                acquisition_type=acquisition_type)
     if normalize_X:
         # スケーリングを実軸に戻してプリント
         for i, domain_each in enumerate(domain_origin):
@@ -126,6 +131,8 @@ if __name__ == '__main__':
                         help='minmax normalization of X')
     parser.add_argument('--batch_size', type=int, default=4,
                         help='suggest batch size')
+    parser.add_argument('--acquisition_type', type=str, default='EI',
+                        help='acquisition_type: EI, LCB')
 
     args = parser.parse_args()
 

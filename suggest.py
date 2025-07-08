@@ -4,7 +4,7 @@ from GPyOpt.methods import BayesianOptimization
 from numpy.random import seed
 
 
-def suggest_parameter(domain, data, normalize_Y, batch_size):
+def suggest_parameter(domain, data, normalize_Y, batch_size, acquisition_type):
     data = data.to_numpy()
     # 末列以外の部分で実験条件の設定を行なっている。
     conditions = data[:, 0:(len(data[0])-1)]
@@ -21,7 +21,7 @@ def suggest_parameter(domain, data, normalize_Y, batch_size):
                                     Y=results,
                                     batch_size=batch_size,
                                     normalize_Y=normalize_Y,
-                                    acquisition_type='LCB',
+                                    acquisition_type=acquisition_type,
                                     evaluator_type = 'local_penalization'
                                     )
     next_conditions = myBopt.suggest_next_locations()

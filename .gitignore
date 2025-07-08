@@ -2,3 +2,6 @@ __pycache__/
 .envrc
 venv
 conditions*
+/datasets/
+/.python-version
+/results/

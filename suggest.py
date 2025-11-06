@@ -4,7 +4,7 @@ from GPyOpt.methods import BayesianOptimization
 from numpy.random import seed
 
 
-def suggest_parameter(domain, data, normalize_Y, batch_size, acquisition_type):
+def suggest_parameter(domain, data, normalize_Y, batch_size, acquisition_type, seed_num):
     data = data.to_numpy()
     # 末列以外の部分で実験条件の設定を行なっている。
     conditions = data[:, 0:(len(data[0])-1)]
@@ -14,7 +14,7 @@ def suggest_parameter(domain, data, normalize_Y, batch_size, acquisition_type):
     results = -1 * results
 
     # クラスのインスタンス化と次の実験条件の提案
-    seed(123)
+    seed(seed_num)
     myBopt = BayesianOptimization(f=None,
                                     domain=domain,
                                     X=conditions,

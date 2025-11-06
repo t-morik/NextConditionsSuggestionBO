@@ -30,7 +30,8 @@ def main(args):
     save_dir = check_dir(args.save_dir)
     batch_size = int(args.batch_size)
     normalize_X = args.normalize_X
-    acquisition_type =args.acquisition_type
+    acquisition_type = args.acquisition_type
+    seed = int(args.seed)
 
     # コマンドを command.txt に書き出す
     command = f"{sys.executable} " + " ".join(sys.argv)
@@ -88,7 +89,8 @@ def main(args):
                                                 data=data,
                                                 normalize_Y=normalize_Y,
                                                 batch_size=batch_size,
-                                                acquisition_type=acquisition_type)
+                                                acquisition_type=acquisition_type,
+                                                seed_num=seed)
     if normalize_X:
         # スケーリングを実軸に戻してプリント
         for i, domain_each in enumerate(domain_origin):
@@ -126,14 +128,15 @@ if __name__ == '__main__':
     parser.add_argument('--y_label', type=str, default='Score',
                         help='output label')
     parser.add_argument('--normalize_Y', action='store_true',
-                        help='normalization of Y')
+                        help='zscore normalization of Y')
     parser.add_argument('--normalize_X', action='store_true',
                         help='minmax normalization of X')
     parser.add_argument('--batch_size', type=int, default=4,
                         help='suggest batch size')
     parser.add_argument('--acquisition_type', type=str, default='LCB',
                         help='acquisition_type: EI, LCB')
-
+    parser.add_argument('--seed', type=int, default=123,
+                        help='random seed')
     args = parser.parse_args()
 
     main(args)

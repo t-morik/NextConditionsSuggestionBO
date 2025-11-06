@@ -51,9 +51,9 @@ cd ../
 ```
 
 上記2つのファイルを作成したら，下記のコマンドを実行する．
-
+(*) 20251106より，normalize_x, normalize_y, UCBの条件に設定
 ```
-python main.py --dataset ./datasets/20250708/conditions.csv --domain ./datasets/20250708/domain.json --save_dir ./results/20250708/normalize_Y --normalize_Y
+python main.py --dataset ./datasets/20251106/conditions.csv --domain ./datasets/20251106/domain.json --save_dir ./results/20251106 --normalize_Y --normalize_X --acquisition_type LCB
 ```
 
 と実行することで以下のように結果を得ることができる。

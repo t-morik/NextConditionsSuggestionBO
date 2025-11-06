@@ -131,7 +131,7 @@ if __name__ == '__main__':
                         help='minmax normalization of X')
     parser.add_argument('--batch_size', type=int, default=4,
                         help='suggest batch size')
-    parser.add_argument('--acquisition_type', type=str, default='EI',
+    parser.add_argument('--acquisition_type', type=str, default='LCB',
                         help='acquisition_type: EI, LCB')
 
     args = parser.parse_args()
